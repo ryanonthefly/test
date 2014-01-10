@@ -82,10 +82,13 @@ d3.tsv("data-line.tsv", function(error, data) {
       .style("text-anchor", "end")
       .text("Price ($)");
 
-  svg.append("path")
+  var lines = svg.append("path")
       .datum(data)
       .attr("class", "line")
       .attr("d", line);
+  
+  lines.on("click", function(){alert("click the line.");});
 });
 
 </script>
+

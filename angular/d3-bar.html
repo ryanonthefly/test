@@ -74,7 +74,7 @@ d3.tsv("data-bar.tsv", type, function(error, data) {
       .style("text-anchor", "end")
       .text("Frequency");
 
-  svg.selectAll(".bar")
+  var bars = svg.selectAll(".bar")
       .data(data)
     .enter().append("rect")
       .attr("class", "bar")
@@ -82,8 +82,11 @@ d3.tsv("data-bar.tsv", type, function(error, data) {
       .attr("width", x.rangeBand())
       .attr("y", function(d) { return y(d.frequency); })
       .attr("height", function(d) { return height - y(d.frequency); });
-
+  
+  bars.on("click", function(){alert("click me");});
+  //svg.selectAll(".bar").on("click", function(){alert("try it.");});
 });
+
 
 function type(d) {
   d.frequency = +d.frequency;
